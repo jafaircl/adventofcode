@@ -32,8 +32,7 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "exclude": ["apps/aoc2024-e2e/**/*"]
+      }
     }
   ]
 }
