@@ -1,19 +1,4 @@
-import { calculateDistance, radixSort } from './day1';
-
-describe('Day 1', () => {
-  it('radixSort', () => {
-    // Test the radixSort function
-    expect(radixSort([1, 2, 3, 4, 5])).toEqual([1, 2, 3, 4, 5]);
-    expect(radixSort([5, 4, 3, 2, 1])).toEqual([1, 2, 3, 4, 5]);
-    expect(radixSort([5, 4, 3, 2, 1, 0])).toEqual([0, 1, 2, 3, 4, 5]);
-    expect(radixSort([1, 33, 444, 0, 3, 2])).toEqual([0, 1, 2, 3, 33, 444]);
-    expect(radixSort([1, 33, 444, 0, 3, 2, 12345, 123456])).toEqual([
-      0, 1, 2, 3, 33, 444, 12345, 123456,
-    ]);
-  });
-
-  it('calculateDistance', () => {
-    const data = `
+const data = `
 80784   47731
 81682   36089
 22289   41038
@@ -1015,14 +1000,14 @@ describe('Day 1', () => {
 65715   12422
 21544   29737
 `;
-    // Split the data into 2 arrays of numbers representing the columns
-    const col1: number[] = [];
-    const col2: number[] = [];
-    for (const line of data.trim().split('\n')) {
-      const [a, b] = line.split(/\s+/).map(Number);
-      col1.push(a);
-      col2.push(b);
-    }
-    expect(calculateDistance(col1, col2)).toBe(1530215);
-  });
-});
+
+// Split the data into 2 arrays of numbers representing the columns
+const col1: number[] = [];
+const col2: number[] = [];
+for (const line of data.trim().split('\n')) {
+  const [a, b] = line.split(/\s+/).map(Number);
+  col1.push(a);
+  col2.push(b);
+}
+
+export { col1, col2 };

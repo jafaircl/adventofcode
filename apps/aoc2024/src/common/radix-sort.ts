@@ -28,18 +28,16 @@ export function radixSort(arr: number[]): number[] {
     }
     result = ([] as number[]).concat(...buckets);
   }
-  return result;
-}
-
-/**
- * Given two columns of numbers, sort them and calculate the distance between each pair of numbers.
- */
-export function calculateDistance(col1: number[], col2: number[]): number {
-  const sortedCol1 = radixSort(col1);
-  const sortedCol2 = radixSort(col2);
-  let distance = 0;
-  for (let i = 0; i < col1.length; i++) {
-    distance += Math.abs(sortedCol1[i] - sortedCol2[i]);
+  // Do one final pass to handle negative numbers
+  const negative: number[] = [];
+  const positive: number[] = [];
+  for (let i = 0; i < result.length; i++) {
+    if (result[i] < 0) {
+      // negative numbers need to be reversed so they go to the front
+      negative.unshift(result[i]);
+    } else {
+      positive.push(result[i]);
+    }
   }
-  return distance;
+  return negative.concat(positive);
 }
